@@ -1,0 +1,934 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SecurityApiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccessEntity">
+    <Key>
+      <PropertyRef Name="AccessEntityId" />
+    </Key>
+    <Property Name="AccessEntityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessEntityTypeCd" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="AccessEntityAuthorizations">
+    <Key>
+      <PropertyRef Name="AccessEntityId" />
+      <PropertyRef Name="UserEntityId" />
+    </Key>
+    <Property Name="AccessEntityId" Type="int" Nullable="false" />
+    <Property Name="UserEntityId" Type="int" Nullable="false" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="AccessEntityUsersSettings">
+    <Key>
+      <PropertyRef Name="AccessEntityId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ScreenItemTag" />
+    </Key>
+    <Property Name="AccessEntityId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ScreenItemTag" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SettingXml" Type="xml" />
+  </EntityType>
+  <EntityType Name="ActiveToken">
+    <Key>
+      <PropertyRef Name="TokenId" />
+    </Key>
+    <Property Name="TokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CompanyCd" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="ChannelId" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TokenValue" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TokenTimeOut" Type="int" />
+    <Property Name="CreationDt" Type="datetime" Nullable="false" />
+    <Property Name="LastConnAttempt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessEntityId" Type="int" Nullable="false" />
+    <Property Name="ApplicationTag" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+    <Property Name="ParentId" Type="int" />
+  </EntityType>
+  <EntityType Name="ApplicationAccess">
+    <Key>
+      <PropertyRef Name="AccessId" />
+    </Key>
+    <Property Name="AccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessEntityId" Type="int" Nullable="false" />
+    <Property Name="ApplicationId" Type="int" Nullable="false" />
+    <Property Name="AccessTag" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+    <Property Name="ParentId" Type="int" />
+  </EntityType>
+  <EntityType Name="ApplicationAccessActions">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessEntityId" Type="int" Nullable="false" />
+    <Property Name="AccessId" Type="int" Nullable="false" />
+    <Property Name="ActionTag" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+    <Property Name="ParentId" Type="int" />
+  </EntityType>
+  <EntityType Name="CatDomainSettings">
+    <Key>
+      <PropertyRef Name="SettingId" />
+    </Key>
+    <Property Name="SettingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SettingTypeId" Type="int" Nullable="false" />
+    <Property Name="SettingCd" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="ValueDefault" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MinLength" Type="int" />
+    <Property Name="MaxLength" Type="int" />
+    <Property Name="MinRange" Type="int" />
+    <Property Name="MaxRange" Type="int" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="CatSettingsDataTypes">
+    <Key>
+      <PropertyRef Name="SettingTypeId" />
+    </Key>
+    <Property Name="SettingTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SettingTypeCd" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="40" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="CatSystemCatalog">
+    <Key>
+      <PropertyRef Name="CatalogId" />
+    </Key>
+    <Property Name="CatalogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CatSystemCatalogDetail">
+    <Key>
+      <PropertyRef Name="CatalogId" />
+      <PropertyRef Name="CatalogKey" />
+    </Key>
+    <Property Name="CatalogId" Type="int" Nullable="false" />
+    <Property Name="CatalogKey" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="OrderBy" Type="int" />
+  </EntityType>
+  <EntityType Name="CatUserSettings">
+    <Key>
+      <PropertyRef Name="SettingId" />
+    </Key>
+    <Property Name="SettingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SettingTypeId" Type="int" Nullable="false" />
+    <Property Name="SettingCd" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="ValueDefault" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MinLength" Type="int" />
+    <Property Name="MaxLength" Type="int" />
+    <Property Name="MinRange" Type="int" />
+    <Property Name="MaxRange" Type="int" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="LastModDt" Type="datetime" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Domain">
+    <Key>
+      <PropertyRef Name="DomainId" />
+    </Key>
+    <Property Name="DomainId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DomainTypeCd" Type="varchar" MaxLength="3" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="DomainSettings">
+    <Key>
+      <PropertyRef Name="DomainId" />
+      <PropertyRef Name="SettingId" />
+    </Key>
+    <Property Name="DomainId" Type="int" Nullable="false" />
+    <Property Name="SettingId" Type="int" Nullable="false" />
+    <Property Name="Value" Type="varchar" MaxLength="255" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="EndUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DomainId" Type="int" Nullable="false" />
+    <Property Name="UserEntityId" Type="int" Nullable="false" />
+    <Property Name="CompanyCd" Type="varchar" MaxLength="3" />
+    <Property Name="ChannelId" Type="varchar" MaxLength="3" />
+    <Property Name="UserTypeCd" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varbinary(max)" />
+    <Property Name="FirstName" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="40" />
+    <Property Name="LastName" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="MotherMName" Type="varchar" MaxLength="40" />
+    <Property Name="LockedCd" Type="char" MaxLength="3" />
+    <Property Name="LockedDt" Type="datetime" />
+    <Property Name="Badpwdcount" Type="int" />
+    <Property Name="LastLogOnDt" Type="datetime" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+    <Property Name="ExpirateDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IPAddress">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="FromIPAddress" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FromIPAddress" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ToIPAddress" Type="varchar" MaxLength="20" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="ProfileId" />
+    </Key>
+    <Property Name="ProfileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DomainId" Type="int" Nullable="false" />
+    <Property Name="UserEntityId" Type="int" Nullable="false" />
+    <Property Name="ProfileCd" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="40" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UserEntity">
+    <Key>
+      <PropertyRef Name="UserEntityId" />
+    </Key>
+    <Property Name="UserEntityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserEntityTypeCd" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UserEntityPermissionsAccess">
+    <Key>
+      <PropertyRef Name="UserEntityId" />
+      <PropertyRef Name="AccessEntityId" />
+    </Key>
+    <Property Name="UserEntityId" Type="int" Nullable="false" />
+    <Property Name="AccessEntityId" Type="int" Nullable="false" />
+    <Property Name="ExpirationDt" Type="datetime" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UserProfiles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ProfileId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ProfileId" Type="int" Nullable="false" />
+    <Property Name="ExpirationDt" Type="datetime" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UserPwdHistoryLog">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RegistrationDt" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RegistrationDt" Type="datetime" Nullable="false" />
+    <Property Name="UserPass" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserSettings">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="SettingId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="SettingId" Type="int" Nullable="false" />
+    <Property Name="Value" Type="varchar" MaxLength="255" />
+    <Property Name="CreationDt" Type="datetime" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="LastModDt" Type="datetime" Nullable="false" />
+    <Property Name="LastModBy" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SecurityApi.dbo.uvSysUserEntityAuthorizations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="uvSysUserEntityAuthorizations">
+    <Key>
+      <PropertyRef Name="USER_ENTITY_TYPE_CD" />
+      <PropertyRef Name="USER_NAME" />
+      <PropertyRef Name="USER_LOCKED_CD" />
+      <PropertyRef Name="USER_ISENABLED" />
+      <PropertyRef Name="USER_ISDELETED" />
+      <PropertyRef Name="PROFILE_NAME" />
+      <PropertyRef Name="PROFILE_ISENABLED" />
+      <PropertyRef Name="PROFILE_ISDELETED" />
+    </Key>
+    <Property Name="USER_ENTITY_TYPE_CD" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="USER_ENTITY_ID" Type="int" />
+    <Property Name="USER_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="USER_LOCKED_CD" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="USER_ISENABLED" Type="bit" Nullable="false" />
+    <Property Name="USER_ISDELETED" Type="bit" Nullable="false" />
+    <Property Name="PROFILE_NAME" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="PROFILE_ISENABLED" Type="bit" Nullable="false" />
+    <Property Name="PROFILE_ISDELETED" Type="bit" Nullable="false" />
+    <Property Name="ApplicationTag" Type="varchar" MaxLength="50" />
+    <Property Name="ApplicationName" Type="varchar" MaxLength="50" />
+    <Property Name="AccessTag" Type="varchar" MaxLength="50" />
+    <Property Name="AccessName" Type="varchar" MaxLength="50" />
+    <Property Name="ActionTag" Type="varchar" MaxLength="50" />
+    <Property Name="ActionName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SecurityApi.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="_FXProfile_DomainId_Domain_FX">
+    <End Role="Domain" Type="Self.Domain" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Domain">
+        <PropertyRef Name="DomainId" />
+      </Principal>
+      <Dependent Role="Profile">
+        <PropertyRef Name="DomainId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccessEntityAuthorizations_AccessEntityId_AccessEntity_FX">
+    <End Role="AccessEntity" Type="Self.AccessEntity" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessEntityAuthorizations" Type="Self.AccessEntityAuthorizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessEntity">
+        <PropertyRef Name="AccessEntityId" />
+      </Principal>
+      <Dependent Role="AccessEntityAuthorizations">
+        <PropertyRef Name="AccessEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccessEntityAuthorizations_UserEntityId_UserEntity_FX">
+    <End Role="UserEntity" Type="Self.UserEntity" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessEntityAuthorizations" Type="Self.AccessEntityAuthorizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserEntity">
+        <PropertyRef Name="UserEntityId" />
+      </Principal>
+      <Dependent Role="AccessEntityAuthorizations">
+        <PropertyRef Name="UserEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccessEntityUsersSettings_AccessEntityId_AccessEntity_FX">
+    <End Role="AccessEntity" Type="Self.AccessEntity" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessEntityUsersSettings" Type="Self.AccessEntityUsersSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessEntity">
+        <PropertyRef Name="AccessEntityId" />
+      </Principal>
+      <Dependent Role="AccessEntityUsersSettings">
+        <PropertyRef Name="AccessEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccessEntityUsersSettings_UserId_EndUser_FX">
+    <End Role="EndUser" Type="Self.EndUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessEntityUsersSettings" Type="Self.AccessEntityUsersSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EndUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="AccessEntityUsersSettings">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Application_AccessEntityId_AccessEntity_FX">
+    <End Role="AccessEntity" Type="Self.AccessEntity" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessEntity">
+        <PropertyRef Name="AccessEntityId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="AccessEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationAccess_AccessEntityId_AccessEntity_FX">
+    <End Role="AccessEntity" Type="Self.AccessEntity" Multiplicity="1" />
+    <End Role="ApplicationAccess" Type="Self.ApplicationAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessEntity">
+        <PropertyRef Name="AccessEntityId" />
+      </Principal>
+      <Dependent Role="ApplicationAccess">
+        <PropertyRef Name="AccessEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationAccess_ApplicationId_Application_FX">
+    <End Role="Application" Type="Self.Application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ApplicationAccess" Type="Self.ApplicationAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="ApplicationAccess">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationAccessActions_AccessEntityId_AccessEntity_FX">
+    <End Role="AccessEntity" Type="Self.AccessEntity" Multiplicity="1" />
+    <End Role="ApplicationAccessActions" Type="Self.ApplicationAccessActions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessEntity">
+        <PropertyRef Name="AccessEntityId" />
+      </Principal>
+      <Dependent Role="ApplicationAccessActions">
+        <PropertyRef Name="AccessEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationAccessActions_AccessId_ApplicationAccess_FX">
+    <End Role="ApplicationAccess" Type="Self.ApplicationAccess" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ApplicationAccessActions" Type="Self.ApplicationAccessActions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationAccess">
+        <PropertyRef Name="AccessId" />
+      </Principal>
+      <Dependent Role="ApplicationAccessActions">
+        <PropertyRef Name="AccessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CatDomainSettings_SettingTypeId_CatSettingsDataTypes_FX">
+    <End Role="CatSettingsDataTypes" Type="Self.CatSettingsDataTypes" Multiplicity="1" />
+    <End Role="CatDomainSettings" Type="Self.CatDomainSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatSettingsDataTypes">
+        <PropertyRef Name="SettingTypeId" />
+      </Principal>
+      <Dependent Role="CatDomainSettings">
+        <PropertyRef Name="SettingTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CatUserSettings_SettingTypeId_CatSettingsDataTypes_FX">
+    <End Role="CatSettingsDataTypes" Type="Self.CatSettingsDataTypes" Multiplicity="1" />
+    <End Role="CatUserSettings" Type="Self.CatUserSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatSettingsDataTypes">
+        <PropertyRef Name="SettingTypeId" />
+      </Principal>
+      <Dependent Role="CatUserSettings">
+        <PropertyRef Name="SettingTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DomainSettings_DomainId_Domain_FX">
+    <End Role="Domain" Type="Self.Domain" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DomainSettings" Type="Self.DomainSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Domain">
+        <PropertyRef Name="DomainId" />
+      </Principal>
+      <Dependent Role="DomainSettings">
+        <PropertyRef Name="DomainId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DomainSettings_SettingId_CatDomainSettings_FX">
+    <End Role="CatDomainSettings" Type="Self.CatDomainSettings" Multiplicity="1" />
+    <End Role="DomainSettings" Type="Self.DomainSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatDomainSettings">
+        <PropertyRef Name="SettingId" />
+      </Principal>
+      <Dependent Role="DomainSettings">
+        <PropertyRef Name="SettingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EndUser_DomainId_Domain_FX">
+    <End Role="Domain" Type="Self.Domain" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EndUser" Type="Self.EndUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Domain">
+        <PropertyRef Name="DomainId" />
+      </Principal>
+      <Dependent Role="EndUser">
+        <PropertyRef Name="DomainId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EndUser_UserEntityId_UserEntity_FX">
+    <End Role="UserEntity" Type="Self.UserEntity" Multiplicity="1" />
+    <End Role="EndUser" Type="Self.EndUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserEntity">
+        <PropertyRef Name="UserEntityId" />
+      </Principal>
+      <Dependent Role="EndUser">
+        <PropertyRef Name="UserEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeValue_CodeNamespace">
+    <End Role="CatSystemCatalog" Type="Self.CatSystemCatalog" Multiplicity="1" />
+    <End Role="CatSystemCatalogDetail" Type="Self.CatSystemCatalogDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatSystemCatalog">
+        <PropertyRef Name="CatalogId" />
+      </Principal>
+      <Dependent Role="CatSystemCatalogDetail">
+        <PropertyRef Name="CatalogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Profile_UserEntityId_UserEntity_FX">
+    <End Role="UserEntity" Type="Self.UserEntity" Multiplicity="1" />
+    <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserEntity">
+        <PropertyRef Name="UserEntityId" />
+      </Principal>
+      <Dependent Role="Profile">
+        <PropertyRef Name="UserEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_31">
+    <End Role="EndUser" Type="Self.EndUser" Multiplicity="1" />
+    <End Role="ActiveToken" Type="Self.ActiveToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EndUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ActiveToken">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TerminalIP_UserId_EndUser_FX">
+    <End Role="EndUser" Type="Self.EndUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="IPAddress" Type="Self.IPAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EndUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="IPAddress">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserEntityAccessActions_AccessEntityId_AccessEntity_FX">
+    <End Role="AccessEntity" Type="Self.AccessEntity" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserEntityPermissionsAccess" Type="Self.UserEntityPermissionsAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessEntity">
+        <PropertyRef Name="AccessEntityId" />
+      </Principal>
+      <Dependent Role="UserEntityPermissionsAccess">
+        <PropertyRef Name="AccessEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserEntityAccessActions_UserEntityId_UserEntity_FX">
+    <End Role="UserEntity" Type="Self.UserEntity" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserEntityPermissionsAccess" Type="Self.UserEntityPermissionsAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserEntity">
+        <PropertyRef Name="UserEntityId" />
+      </Principal>
+      <Dependent Role="UserEntityPermissionsAccess">
+        <PropertyRef Name="UserEntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserProfiles_ProfileId_Profile_FX">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="ProfileId" />
+      </Principal>
+      <Dependent Role="UserProfiles">
+        <PropertyRef Name="ProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserProfiles_UserId_EndUser_FX">
+    <End Role="EndUser" Type="Self.EndUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EndUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserProfiles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserPwdHistoryLog_UserId_EndUser_FX">
+    <End Role="EndUser" Type="Self.EndUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserPwdHistoryLog" Type="Self.UserPwdHistoryLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EndUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserPwdHistoryLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSettings_SettingId_CatUserSettings_FX">
+    <End Role="CatUserSettings" Type="Self.CatUserSettings" Multiplicity="1" />
+    <End Role="UserSettings" Type="Self.UserSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatUserSettings">
+        <PropertyRef Name="SettingId" />
+      </Principal>
+      <Dependent Role="UserSettings">
+        <PropertyRef Name="SettingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSettings_UserId_EndUser_FX">
+    <End Role="EndUser" Type="Self.EndUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserSettings" Type="Self.UserSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EndUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserSettings">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Desencriptar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="password_hash" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="password_desenc" Type="nvarchar(max)" Mode="InOut" />
+  </Function>
+  <Function Name="DesencriptaVer2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Key" Type="varchar(max)" Mode="In" />
+    <Parameter Name="hash" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="Encriptar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="password_hash" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="EncriptaVer2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Key" Type="varchar(max)" Mode="In" />
+    <Parameter Name="word" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="upSysAddProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="psDomainTypeCd" Type="varchar" Mode="In" />
+    <Parameter Name="psEntityTypeCd" Type="varchar" Mode="In" />
+    <Parameter Name="psProfileCd" Type="varchar" Mode="In" />
+    <Parameter Name="psProfileName" Type="varchar" Mode="In" />
+    <Parameter Name="psUserName" Type="varchar" Mode="In" />
+    <Parameter Name="pnProfileId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="upSysEncryptStr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pchrvData" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="upSysGetDesEncryptData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="binvData" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="pchrvData" Type="varchar(max)" Mode="InOut" />
+  </Function>
+  <Function Name="upSysGetDomainSetting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DomainTypeCd" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="upSysGetEncryptData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pchrvData" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="upSysGetIPAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pnUserId" Type="int" Mode="In" />
+    <Parameter Name="psFromIPAddress" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="upSysGetSettingsByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="upSysGetUserSetting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DomainCd" Type="varchar" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="upSysGetValidAuthentication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="psUserName" Type="varchar" Mode="In" />
+    <Parameter Name="psPassword" Type="varchar" Mode="In" />
+    <Parameter Name="psCompanyCd" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="upSysGetVerifyAccess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="SecurityApiModelStoreContainer">
+    <EntitySet Name="AccessEntity" EntityType="Self.AccessEntity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccessEntityAuthorizations" EntityType="Self.AccessEntityAuthorizations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccessEntityUsersSettings" EntityType="Self.AccessEntityUsersSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActiveToken" EntityType="Self.ActiveToken" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationAccess" EntityType="Self.ApplicationAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationAccessActions" EntityType="Self.ApplicationAccessActions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatDomainSettings" EntityType="Self.CatDomainSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatSettingsDataTypes" EntityType="Self.CatSettingsDataTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatSystemCatalog" EntityType="Self.CatSystemCatalog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatSystemCatalogDetail" EntityType="Self.CatSystemCatalogDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatUserSettings" EntityType="Self.CatUserSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Domain" EntityType="Self.Domain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DomainSettings" EntityType="Self.DomainSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EndUser" EntityType="Self.EndUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IPAddress" EntityType="Self.IPAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserEntity" EntityType="Self.UserEntity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserEntityPermissionsAccess" EntityType="Self.UserEntityPermissionsAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserPwdHistoryLog" EntityType="Self.UserPwdHistoryLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSettings" EntityType="Self.UserSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="uvSysUserEntityAuthorizations" EntityType="Self.uvSysUserEntityAuthorizations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [uvSysUserEntityAuthorizations].[USER_ENTITY_TYPE_CD] AS [USER_ENTITY_TYPE_CD], 
+    [uvSysUserEntityAuthorizations].[USER_ENTITY_ID] AS [USER_ENTITY_ID], 
+    [uvSysUserEntityAuthorizations].[USER_NAME] AS [USER_NAME], 
+    [uvSysUserEntityAuthorizations].[USER_LOCKED_CD] AS [USER_LOCKED_CD], 
+    [uvSysUserEntityAuthorizations].[USER_ISENABLED] AS [USER_ISENABLED], 
+    [uvSysUserEntityAuthorizations].[USER_ISDELETED] AS [USER_ISDELETED], 
+    [uvSysUserEntityAuthorizations].[PROFILE_NAME] AS [PROFILE_NAME], 
+    [uvSysUserEntityAuthorizations].[PROFILE_ISENABLED] AS [PROFILE_ISENABLED], 
+    [uvSysUserEntityAuthorizations].[PROFILE_ISDELETED] AS [PROFILE_ISDELETED], 
+    [uvSysUserEntityAuthorizations].[ApplicationTag] AS [ApplicationTag], 
+    [uvSysUserEntityAuthorizations].[ApplicationName] AS [ApplicationName], 
+    [uvSysUserEntityAuthorizations].[AccessTag] AS [AccessTag], 
+    [uvSysUserEntityAuthorizations].[AccessName] AS [AccessName], 
+    [uvSysUserEntityAuthorizations].[ActionTag] AS [ActionTag], 
+    [uvSysUserEntityAuthorizations].[ActionName] AS [ActionName]
+    FROM [dbo].[uvSysUserEntityAuthorizations] AS [uvSysUserEntityAuthorizations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+      <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="_FXProfile_DomainId_Domain_FX" Association="Self._FXProfile_DomainId_Domain_FX">
+      <End Role="Domain" EntitySet="Domain" />
+      <End Role="Profile" EntitySet="Profile" />
+    </AssociationSet>
+    <AssociationSet Name="AccessEntityAuthorizations_AccessEntityId_AccessEntity_FX" Association="Self.AccessEntityAuthorizations_AccessEntityId_AccessEntity_FX">
+      <End Role="AccessEntity" EntitySet="AccessEntity" />
+      <End Role="AccessEntityAuthorizations" EntitySet="AccessEntityAuthorizations" />
+    </AssociationSet>
+    <AssociationSet Name="AccessEntityAuthorizations_UserEntityId_UserEntity_FX" Association="Self.AccessEntityAuthorizations_UserEntityId_UserEntity_FX">
+      <End Role="UserEntity" EntitySet="UserEntity" />
+      <End Role="AccessEntityAuthorizations" EntitySet="AccessEntityAuthorizations" />
+    </AssociationSet>
+    <AssociationSet Name="AccessEntityUsersSettings_AccessEntityId_AccessEntity_FX" Association="Self.AccessEntityUsersSettings_AccessEntityId_AccessEntity_FX">
+      <End Role="AccessEntity" EntitySet="AccessEntity" />
+      <End Role="AccessEntityUsersSettings" EntitySet="AccessEntityUsersSettings" />
+    </AssociationSet>
+    <AssociationSet Name="AccessEntityUsersSettings_UserId_EndUser_FX" Association="Self.AccessEntityUsersSettings_UserId_EndUser_FX">
+      <End Role="EndUser" EntitySet="EndUser" />
+      <End Role="AccessEntityUsersSettings" EntitySet="AccessEntityUsersSettings" />
+    </AssociationSet>
+    <AssociationSet Name="Application_AccessEntityId_AccessEntity_FX" Association="Self.Application_AccessEntityId_AccessEntity_FX">
+      <End Role="AccessEntity" EntitySet="AccessEntity" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationAccess_AccessEntityId_AccessEntity_FX" Association="Self.ApplicationAccess_AccessEntityId_AccessEntity_FX">
+      <End Role="AccessEntity" EntitySet="AccessEntity" />
+      <End Role="ApplicationAccess" EntitySet="ApplicationAccess" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationAccess_ApplicationId_Application_FX" Association="Self.ApplicationAccess_ApplicationId_Application_FX">
+      <End Role="Application" EntitySet="Application" />
+      <End Role="ApplicationAccess" EntitySet="ApplicationAccess" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationAccessActions_AccessEntityId_AccessEntity_FX" Association="Self.ApplicationAccessActions_AccessEntityId_AccessEntity_FX">
+      <End Role="AccessEntity" EntitySet="AccessEntity" />
+      <End Role="ApplicationAccessActions" EntitySet="ApplicationAccessActions" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationAccessActions_AccessId_ApplicationAccess_FX" Association="Self.ApplicationAccessActions_AccessId_ApplicationAccess_FX">
+      <End Role="ApplicationAccess" EntitySet="ApplicationAccess" />
+      <End Role="ApplicationAccessActions" EntitySet="ApplicationAccessActions" />
+    </AssociationSet>
+    <AssociationSet Name="CatDomainSettings_SettingTypeId_CatSettingsDataTypes_FX" Association="Self.CatDomainSettings_SettingTypeId_CatSettingsDataTypes_FX">
+      <End Role="CatSettingsDataTypes" EntitySet="CatSettingsDataTypes" />
+      <End Role="CatDomainSettings" EntitySet="CatDomainSettings" />
+    </AssociationSet>
+    <AssociationSet Name="CatUserSettings_SettingTypeId_CatSettingsDataTypes_FX" Association="Self.CatUserSettings_SettingTypeId_CatSettingsDataTypes_FX">
+      <End Role="CatSettingsDataTypes" EntitySet="CatSettingsDataTypes" />
+      <End Role="CatUserSettings" EntitySet="CatUserSettings" />
+    </AssociationSet>
+    <AssociationSet Name="DomainSettings_DomainId_Domain_FX" Association="Self.DomainSettings_DomainId_Domain_FX">
+      <End Role="Domain" EntitySet="Domain" />
+      <End Role="DomainSettings" EntitySet="DomainSettings" />
+    </AssociationSet>
+    <AssociationSet Name="DomainSettings_SettingId_CatDomainSettings_FX" Association="Self.DomainSettings_SettingId_CatDomainSettings_FX">
+      <End Role="CatDomainSettings" EntitySet="CatDomainSettings" />
+      <End Role="DomainSettings" EntitySet="DomainSettings" />
+    </AssociationSet>
+    <AssociationSet Name="EndUser_DomainId_Domain_FX" Association="Self.EndUser_DomainId_Domain_FX">
+      <End Role="Domain" EntitySet="Domain" />
+      <End Role="EndUser" EntitySet="EndUser" />
+    </AssociationSet>
+    <AssociationSet Name="EndUser_UserEntityId_UserEntity_FX" Association="Self.EndUser_UserEntityId_UserEntity_FX">
+      <End Role="UserEntity" EntitySet="UserEntity" />
+      <End Role="EndUser" EntitySet="EndUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeValue_CodeNamespace" Association="Self.FK_CodeValue_CodeNamespace">
+      <End Role="CatSystemCatalog" EntitySet="CatSystemCatalog" />
+      <End Role="CatSystemCatalogDetail" EntitySet="CatSystemCatalogDetail" />
+    </AssociationSet>
+    <AssociationSet Name="Profile_UserEntityId_UserEntity_FX" Association="Self.Profile_UserEntityId_UserEntity_FX">
+      <End Role="UserEntity" EntitySet="UserEntity" />
+      <End Role="Profile" EntitySet="Profile" />
+    </AssociationSet>
+    <AssociationSet Name="R_31" Association="Self.R_31">
+      <End Role="EndUser" EntitySet="EndUser" />
+      <End Role="ActiveToken" EntitySet="ActiveToken" />
+    </AssociationSet>
+    <AssociationSet Name="TerminalIP_UserId_EndUser_FX" Association="Self.TerminalIP_UserId_EndUser_FX">
+      <End Role="EndUser" EntitySet="EndUser" />
+      <End Role="IPAddress" EntitySet="IPAddress" />
+    </AssociationSet>
+    <AssociationSet Name="UserEntityAccessActions_AccessEntityId_AccessEntity_FX" Association="Self.UserEntityAccessActions_AccessEntityId_AccessEntity_FX">
+      <End Role="AccessEntity" EntitySet="AccessEntity" />
+      <End Role="UserEntityPermissionsAccess" EntitySet="UserEntityPermissionsAccess" />
+    </AssociationSet>
+    <AssociationSet Name="UserEntityAccessActions_UserEntityId_UserEntity_FX" Association="Self.UserEntityAccessActions_UserEntityId_UserEntity_FX">
+      <End Role="UserEntity" EntitySet="UserEntity" />
+      <End Role="UserEntityPermissionsAccess" EntitySet="UserEntityPermissionsAccess" />
+    </AssociationSet>
+    <AssociationSet Name="UserProfiles_ProfileId_Profile_FX" Association="Self.UserProfiles_ProfileId_Profile_FX">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="UserProfiles" EntitySet="UserProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="UserProfiles_UserId_EndUser_FX" Association="Self.UserProfiles_UserId_EndUser_FX">
+      <End Role="EndUser" EntitySet="EndUser" />
+      <End Role="UserProfiles" EntitySet="UserProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="UserPwdHistoryLog_UserId_EndUser_FX" Association="Self.UserPwdHistoryLog_UserId_EndUser_FX">
+      <End Role="EndUser" EntitySet="EndUser" />
+      <End Role="UserPwdHistoryLog" EntitySet="UserPwdHistoryLog" />
+    </AssociationSet>
+    <AssociationSet Name="UserSettings_SettingId_CatUserSettings_FX" Association="Self.UserSettings_SettingId_CatUserSettings_FX">
+      <End Role="CatUserSettings" EntitySet="CatUserSettings" />
+      <End Role="UserSettings" EntitySet="UserSettings" />
+    </AssociationSet>
+    <AssociationSet Name="UserSettings_UserId_EndUser_FX" Association="Self.UserSettings_UserId_EndUser_FX">
+      <End Role="EndUser" EntitySet="EndUser" />
+      <End Role="UserSettings" EntitySet="UserSettings" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

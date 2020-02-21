@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ad011c9ecebd4f44a337ae09bc142d5b" Name="Diagram1">
+        <EntityTypeShape EntityType="SecurityApiModel.AccessEntity" Width="1.5" PointX="0.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.AccessEntityAuthorizations" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.AccessEntityUsersSettings" Width="1.5" PointX="11.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.ActiveToken" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.Application" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.ApplicationAccess" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.ApplicationAccessActions" Width="1.5" PointX="10.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.CatDomainSettings" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.CatSettingsDataTypes" Width="1.5" PointX="6.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.CatSystemCatalog" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.CatSystemCatalogDetail" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.CatUserSettings" Width="1.5" PointX="9" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.Domain" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.DomainSettings" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.EndUser" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.IPAddress" Width="1.5" PointX="8.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.Profile" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.UserEntity" Width="1.5" PointX="0.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.UserEntityPermissionsAccess" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.UserProfiles" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.UserPwdHistoryLog" Width="1.5" PointX="8.25" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.UserSettings" Width="1.5" PointX="11.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.uvSysUserEntityAuthorizations" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityApiModel.database_firewall_rules" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="SecurityApiModel.AccessEntityAuthorizations_AccessEntityId_AccessEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.AccessEntityUsersSettings_AccessEntityId_AccessEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.Application_AccessEntityId_AccessEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.ApplicationAccess_AccessEntityId_AccessEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.ApplicationAccessActions_AccessEntityId_AccessEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.UserEntityAccessActions_AccessEntityId_AccessEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.AccessEntityAuthorizations_UserEntityId_UserEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.AccessEntityUsersSettings_UserId_EndUser_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.R_31" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.ApplicationAccess_ApplicationId_Application_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.ApplicationAccessActions_AccessId_ApplicationAccess_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.CatDomainSettings_SettingTypeId_CatSettingsDataTypes_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.DomainSettings_SettingId_CatDomainSettings_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.CatUserSettings_SettingTypeId_CatSettingsDataTypes_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.FK_CodeValue_CodeNamespace" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.UserSettings_SettingId_CatUserSettings_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.C_FXProfile_DomainId_Domain_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.DomainSettings_DomainId_Domain_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.EndUser_DomainId_Domain_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.EndUser_UserEntityId_UserEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.TerminalIP_UserId_EndUser_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.UserProfiles_UserId_EndUser_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.UserPwdHistoryLog_UserId_EndUser_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.UserSettings_UserId_EndUser_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.Profile_UserEntityId_UserEntity_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.UserProfiles_ProfileId_Profile_FX" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityApiModel.UserEntityAccessActions_UserEntityId_UserEntity_FX" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

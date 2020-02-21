@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SecurityApiModelStoreContainer" CdmEntityContainer="SecurityApiEntities">
+    <EntitySetMapping Name="AccessEntity">
+      <EntityTypeMapping TypeName="SecurityApiModel.AccessEntity">
+        <MappingFragment StoreEntitySet="AccessEntity">
+          <ScalarProperty Name="AccessEntityId" ColumnName="AccessEntityId" />
+          <ScalarProperty Name="AccessEntityTypeCd" ColumnName="AccessEntityTypeCd" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccessEntityAuthorizations">
+      <EntityTypeMapping TypeName="SecurityApiModel.AccessEntityAuthorizations">
+        <MappingFragment StoreEntitySet="AccessEntityAuthorizations">
+          <ScalarProperty Name="AccessEntityId" ColumnName="AccessEntityId" />
+          <ScalarProperty Name="UserEntityId" ColumnName="UserEntityId" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccessEntityUsersSettings">
+      <EntityTypeMapping TypeName="SecurityApiModel.AccessEntityUsersSettings">
+        <MappingFragment StoreEntitySet="AccessEntityUsersSettings">
+          <ScalarProperty Name="AccessEntityId" ColumnName="AccessEntityId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ScreenItemTag" ColumnName="ScreenItemTag" />
+          <ScalarProperty Name="SettingXml" ColumnName="SettingXml" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActiveToken">
+      <EntityTypeMapping TypeName="SecurityApiModel.ActiveToken">
+        <MappingFragment StoreEntitySet="ActiveToken">
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CompanyCd" ColumnName="CompanyCd" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="TokenValue" ColumnName="TokenValue" />
+          <ScalarProperty Name="TokenTimeOut" ColumnName="TokenTimeOut" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="LastConnAttempt" ColumnName="LastConnAttempt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Application">
+      <EntityTypeMapping TypeName="SecurityApiModel.Application">
+        <MappingFragment StoreEntitySet="Application">
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="AccessEntityId" ColumnName="AccessEntityId" />
+          <ScalarProperty Name="ApplicationTag" ColumnName="ApplicationTag" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationAccess">
+      <EntityTypeMapping TypeName="SecurityApiModel.ApplicationAccess">
+        <MappingFragment StoreEntitySet="ApplicationAccess">
+          <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+          <ScalarProperty Name="AccessEntityId" ColumnName="AccessEntityId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="AccessTag" ColumnName="AccessTag" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationAccessActions">
+      <EntityTypeMapping TypeName="SecurityApiModel.ApplicationAccessActions">
+        <MappingFragment StoreEntitySet="ApplicationAccessActions">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="AccessEntityId" ColumnName="AccessEntityId" />
+          <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+          <ScalarProperty Name="ActionTag" ColumnName="ActionTag" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatDomainSettings">
+      <EntityTypeMapping TypeName="SecurityApiModel.CatDomainSettings">
+        <MappingFragment StoreEntitySet="CatDomainSettings">
+          <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+          <ScalarProperty Name="SettingTypeId" ColumnName="SettingTypeId" />
+          <ScalarProperty Name="SettingCd" ColumnName="SettingCd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ValueDefault" ColumnName="ValueDefault" />
+          <ScalarProperty Name="MinLength" ColumnName="MinLength" />
+          <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+          <ScalarProperty Name="MinRange" ColumnName="MinRange" />
+          <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatSettingsDataTypes">
+      <EntityTypeMapping TypeName="SecurityApiModel.CatSettingsDataTypes">
+        <MappingFragment StoreEntitySet="CatSettingsDataTypes">
+          <ScalarProperty Name="SettingTypeId" ColumnName="SettingTypeId" />
+          <ScalarProperty Name="SettingTypeCd" ColumnName="SettingTypeCd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatSystemCatalog">
+      <EntityTypeMapping TypeName="SecurityApiModel.CatSystemCatalog">
+        <MappingFragment StoreEntitySet="CatSystemCatalog">
+          <ScalarProperty Name="CatalogId" ColumnName="CatalogId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatSystemCatalogDetail">
+      <EntityTypeMapping TypeName="SecurityApiModel.CatSystemCatalogDetail">
+        <MappingFragment StoreEntitySet="CatSystemCatalogDetail">
+          <ScalarProperty Name="CatalogId" ColumnName="CatalogId" />
+          <ScalarProperty Name="CatalogKey" ColumnName="CatalogKey" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatUserSettings">
+      <EntityTypeMapping TypeName="SecurityApiModel.CatUserSettings">
+        <MappingFragment StoreEntitySet="CatUserSettings">
+          <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+          <ScalarProperty Name="SettingTypeId" ColumnName="SettingTypeId" />
+          <ScalarProperty Name="SettingCd" ColumnName="SettingCd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ValueDefault" ColumnName="ValueDefault" />
+          <ScalarProperty Name="MinLength" ColumnName="MinLength" />
+          <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+          <ScalarProperty Name="MinRange" ColumnName="MinRange" />
+          <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Domain">
+      <EntityTypeMapping TypeName="SecurityApiModel.Domain">
+        <MappingFragment StoreEntitySet="Domain">
+          <ScalarProperty Name="DomainId" ColumnName="DomainId" />
+          <ScalarProperty Name="DomainTypeCd" ColumnName="DomainTypeCd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DomainSettings">
+      <EntityTypeMapping TypeName="SecurityApiModel.DomainSettings">
+        <MappingFragment StoreEntitySet="DomainSettings">
+          <ScalarProperty Name="DomainId" ColumnName="DomainId" />
+          <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EndUser">
+      <EntityTypeMapping TypeName="SecurityApiModel.EndUser">
+        <MappingFragment StoreEntitySet="EndUser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DomainId" ColumnName="DomainId" />
+          <ScalarProperty Name="UserEntityId" ColumnName="UserEntityId" />
+          <ScalarProperty Name="CompanyCd" ColumnName="CompanyCd" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="UserTypeCd" ColumnName="UserTypeCd" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MotherMName" ColumnName="MotherMName" />
+          <ScalarProperty Name="LockedCd" ColumnName="LockedCd" />
+          <ScalarProperty Name="LockedDt" ColumnName="LockedDt" />
+          <ScalarProperty Name="Badpwdcount" ColumnName="Badpwdcount" />
+          <ScalarProperty Name="LastLogOnDt" ColumnName="LastLogOnDt" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+          <ScalarProperty Name="ExpirateDate" ColumnName="ExpirateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IPAddress">
+      <EntityTypeMapping TypeName="SecurityApiModel.IPAddress">
+        <MappingFragment StoreEntitySet="IPAddress">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FromIPAddress" ColumnName="FromIPAddress" />
+          <ScalarProperty Name="ToIPAddress" ColumnName="ToIPAddress" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profile">
+      <EntityTypeMapping TypeName="SecurityApiModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="DomainId" ColumnName="DomainId" />
+          <ScalarProperty Name="UserEntityId" ColumnName="UserEntityId" />
+          <ScalarProperty Name="ProfileCd" ColumnName="ProfileCd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEntity">
+      <EntityTypeMapping TypeName="SecurityApiModel.UserEntity">
+        <MappingFragment StoreEntitySet="UserEntity">
+          <ScalarProperty Name="UserEntityId" ColumnName="UserEntityId" />
+          <ScalarProperty Name="UserEntityTypeCd" ColumnName="UserEntityTypeCd" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEntityPermissionsAccess">
+      <EntityTypeMapping TypeName="SecurityApiModel.UserEntityPermissionsAccess">
+        <MappingFragment StoreEntitySet="UserEntityPermissionsAccess">
+          <ScalarProperty Name="UserEntityId" ColumnName="UserEntityId" />
+          <ScalarProperty Name="AccessEntityId" ColumnName="AccessEntityId" />
+          <ScalarProperty Name="ExpirationDt" ColumnName="ExpirationDt" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="SecurityApiModel.UserProfiles">
+        <MappingFragment StoreEntitySet="UserProfiles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="ExpirationDt" ColumnName="ExpirationDt" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPwdHistoryLog">
+      <EntityTypeMapping TypeName="SecurityApiModel.UserPwdHistoryLog">
+        <MappingFragment StoreEntitySet="UserPwdHistoryLog">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RegistrationDt" ColumnName="RegistrationDt" />
+          <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSettings">
+      <EntityTypeMapping TypeName="SecurityApiModel.UserSettings">
+        <MappingFragment StoreEntitySet="UserSettings">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CreationDt" ColumnName="CreationDt" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModDt" ColumnName="LastModDt" />
+          <ScalarProperty Name="LastModBy" ColumnName="LastModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uvSysUserEntityAuthorizations">
+      <EntityTypeMapping TypeName="SecurityApiModel.uvSysUserEntityAuthorizations">
+        <MappingFragment StoreEntitySet="uvSysUserEntityAuthorizations">
+          <ScalarProperty Name="USER_ENTITY_TYPE_CD" ColumnName="USER_ENTITY_TYPE_CD" />
+          <ScalarProperty Name="USER_ENTITY_ID" ColumnName="USER_ENTITY_ID" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="USER_LOCKED_CD" ColumnName="USER_LOCKED_CD" />
+          <ScalarProperty Name="USER_ISENABLED" ColumnName="USER_ISENABLED" />
+          <ScalarProperty Name="USER_ISDELETED" ColumnName="USER_ISDELETED" />
+          <ScalarProperty Name="PROFILE_NAME" ColumnName="PROFILE_NAME" />
+          <ScalarProperty Name="PROFILE_ISENABLED" ColumnName="PROFILE_ISENABLED" />
+          <ScalarProperty Name="PROFILE_ISDELETED" ColumnName="PROFILE_ISDELETED" />
+          <ScalarProperty Name="ApplicationTag" ColumnName="ApplicationTag" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="AccessTag" ColumnName="AccessTag" />
+          <ScalarProperty Name="AccessName" ColumnName="AccessName" />
+          <ScalarProperty Name="ActionTag" ColumnName="ActionTag" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="SecurityApiModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="upSysAddProfile" FunctionName="SecurityApiModel.Store.upSysAddProfile" />
+    <FunctionImportMapping FunctionImportName="upSysEncryptStr" FunctionName="SecurityApiModel.Store.upSysEncryptStr" />
+    <FunctionImportMapping FunctionImportName="upSysGetDesEncryptData" FunctionName="SecurityApiModel.Store.upSysGetDesEncryptData" />
+    <FunctionImportMapping FunctionImportName="upSysGetDomainSetting" FunctionName="SecurityApiModel.Store.upSysGetDomainSetting">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SecurityApiModel.upSysGetDomainSetting_Result">
+          <ScalarProperty Name="SettingCd" ColumnName="SettingCd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="upSysGetEncryptData" FunctionName="SecurityApiModel.Store.upSysGetEncryptData" />
+    <FunctionImportMapping FunctionImportName="upSysGetIPAddress" FunctionName="SecurityApiModel.Store.upSysGetIPAddress">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SecurityApiModel.upSysGetIPAddress_Result">
+          <ScalarProperty Name="FromIPAddress" ColumnName="FromIPAddress" />
+          <ScalarProperty Name="ToIPAddress" ColumnName="ToIPAddress" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="upSysGetSettingsByUser" FunctionName="SecurityApiModel.Store.upSysGetSettingsByUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SecurityApiModel.upSysGetSettingsByUser_Result">
+          <ScalarProperty Name="SettingCd" ColumnName="SettingCd" />
+          <ScalarProperty Name="SettingType" ColumnName="SettingType" />
+          <ScalarProperty Name="IsEditable" ColumnName="IsEditable" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserSettingId" ColumnName="UserSettingId" />
+          <ScalarProperty Name="UserSettingValue" ColumnName="UserSettingValue" />
+          <ScalarProperty Name="DomainSettingId" ColumnName="DomainSettingId" />
+          <ScalarProperty Name="DomainSettingValue" ColumnName="DomainSettingValue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="upSysGetUserSetting" FunctionName="SecurityApiModel.Store.upSysGetUserSetting">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SecurityApiModel.upSysGetUserSetting_Result">
+          <ScalarProperty Name="SettingCd" ColumnName="SettingCd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="upSysGetValidAuthentication" FunctionName="SecurityApiModel.Store.upSysGetValidAuthentication" />
+    <FunctionImportMapping FunctionImportName="upSysGetVerifyAccess" FunctionName="SecurityApiModel.Store.upSysGetVerifyAccess">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SecurityApiModel.upSysGetVerifyAccess_Result">
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="dependence" ColumnName="dependence" />
+          <ScalarProperty Name="AccessEntityId" ColumnName="AccessEntityId" />
+          <ScalarProperty Name="AccessEntityTypeCd" ColumnName="AccessEntityTypeCd" />
+          <ScalarProperty Name="ApplicationTag" ColumnName="ApplicationTag" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Desencriptar" FunctionName="SecurityApiModel.Store.Desencriptar" />
+    <FunctionImportMapping FunctionImportName="DesencriptaVer2" FunctionName="SecurityApiModel.Store.DesencriptaVer2" />
+    <FunctionImportMapping FunctionImportName="Encriptar" FunctionName="SecurityApiModel.Store.Encriptar" />
+    <FunctionImportMapping FunctionImportName="EncriptaVer2" FunctionName="SecurityApiModel.Store.EncriptaVer2" />
+  </EntityContainerMapping>
+</Mapping>
