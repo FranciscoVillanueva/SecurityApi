@@ -84,3 +84,5 @@ C:\Users\Curso\source\repos\Security\Security\obj\Release\Security.csproj.CoreCo
 C:\Users\Curso\source\repos\Security\Security\obj\Release\Security.csproj.CopyComplete
 C:\Users\Curso\source\repos\Security\Security\obj\Release\Security.dll
 C:\Users\Curso\source\repos\Security\Security\obj\Release\Security.pdb
+C:\Users\Curso\source\repos\Security\Security\bin\Swashbuckle.Core.dll
+C:\Users\Curso\source\repos\Security\Security\bin\WebActivatorEx.dll
