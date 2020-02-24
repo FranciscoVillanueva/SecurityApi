@@ -86,3 +86,12 @@ C:\Users\Curso\source\repos\Security\Security\obj\Release\Security.dll
 C:\Users\Curso\source\repos\Security\Security\obj\Release\Security.pdb
 C:\Users\Curso\source\repos\Security\Security\bin\Swashbuckle.Core.dll
 C:\Users\Curso\source\repos\Security\Security\bin\WebActivatorEx.dll
+C:\Users\Curso\source\repos\Security\Security\bin\AcademyLog.dll
+C:\Users\Curso\source\repos\Security\Security\bin\Microsoft.Win32.Primitives.dll
+C:\Users\Curso\source\repos\Security\Security\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Curso\source\repos\Security\Security\bin\System.Net.Http.dll
+C:\Users\Curso\source\repos\Security\Security\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\Curso\source\repos\Security\Security\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\Curso\source\repos\Security\Security\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\Curso\source\repos\Security\Security\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Curso\source\repos\Security\Security\bin\System.Diagnostics.DiagnosticSource.xml

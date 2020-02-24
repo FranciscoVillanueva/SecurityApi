@@ -16,33 +16,42 @@ namespace Security.Controllers
         [Route("api/NewUser/CreateUser")]
         public IHttpActionResult CreateUser(NewUser newUser)
         {
-            UserEntity usEnt = new UserEntity()
+            if (db.EndUser.Any(x => x.UserName.ToUpper() == newUser.UserName.ToUpper()))
             {
-                UserEntityTypeCd = "USR",
-                IsEnabled = true,
-                IsDeleted = false,
-                LastModDt = DateTime.Now
-            };
-            db.UserEntity.Add(usEnt);
-
-            EndUser newUserTodb = new EndUser()
+                return Content(HttpStatusCode.BadRequest, "repeated");
+            }
+            else
             {
-                UserName = newUser.UserName,
-                FirstName = newUser.FirstName,
-                LastName = newUser.LastName,
-                Password = db.EncriptaVer2(Key, newUser.Password).First(),
-                DomainId = 1,
-                UserEntityId = usEnt.UserEntityId,
-                UserTypeCd = "EXT",
-                IsEnabled = true,
-                IsDeleted = false,
-                LastModDt = DateTime.Now,
-                ExpirateDate = DateTime.Now
-            };
-            db.EndUser.Add(newUserTodb);
-            db.SaveChanges();
+                UserEntity usEnt = new UserEntity()
+                {
+                    UserEntityTypeCd = "USR",
+                    IsEnabled = true,
+                    IsDeleted = false,
+                    LastModDt = DateTime.Now
+                };
+                db.UserEntity.Add(usEnt);
 
-            return Ok();
+                EndUser newUserTodb = new EndUser()
+                {
+                    UserName = newUser.UserName.ToUpper(),
+                    FirstName = newUser.FirstName,
+                    LastName = newUser.LastName,
+                    Password = db.EncriptaVer2(Key, newUser.Password).First(),
+                    DomainId = 1,
+                    UserEntityId = usEnt.UserEntityId,
+                    UserTypeCd = "EXT",
+                    IsEnabled = true,
+                    IsDeleted = false,
+                    LastModDt = DateTime.Now,
+                    ExpirateDate = DateTime.Now
+                };
+                db.EndUser.Add(newUserTodb);
+                db.SaveChanges();
+
+                return Ok();
+            }
+            
+            //return Content(HttpStatusCode.BadRequest, "Any object");
         }
     }
 }
